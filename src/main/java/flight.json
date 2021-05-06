@@ -1,0 +1,37 @@
+[
+  {
+    "flightId": 0,
+    "flightNumber": 3264,
+    "departureAirportIATACode": "YYZ",
+    "arrivalAirportIATACode": "LEW",
+    "departureDate": "2020-09-17T06:36:29"
+  },
+  {
+    "flightId": 1,
+    "flightNumber": 4780,
+    "departureAirportIATACode": "ANC",
+    "arrivalAirportIATACode": "KRK",
+    "departureDate": "2017-05-18T03:20:04"
+  },
+  {
+    "flightId": 2,
+    "flightNumber": 2699,
+    "departureAirportIATACode": "SEA",
+    "arrivalAirportIATACode": "PPX",
+    "departureDate": "2020-03-26T11:32:50"
+  },
+  {
+    "flightId": 3,
+    "flightNumber": 2401,
+    "departureAirportIATACode": "LAX",
+    "arrivalAirportIATACode": "MIT",
+    "departureDate": "2019-05-25T06:49:21"
+  },
+  {
+    "flightId": 4,
+    "flightNumber": 8582,
+    "departureAirportIATACode": "YYZ",
+    "arrivalAirportIATACode": "KRK",
+    "departureDate": "2015-04-26T06:28:32"
+  }
+]
