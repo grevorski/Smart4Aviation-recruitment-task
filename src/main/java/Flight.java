@@ -1,18 +1,34 @@
 import java.util.Date;
 
 public class Flight {
-    final int flightId;
-    final int flightNumber;
-    final String departureAirportIATACode;
-    final String arrivalAirportIATACode;
-    final Date departureDate;
+    private int flightId;
+    private int flightNumber;
+    private String departureAirportIATACode;
+    private String arrivalAirportIATACode;
+    private Date departureDate;
 
-    public Flight(int flightId, int flightNumber, String departureAirportIATACode, String arrivalAirportIATACode, Date departureDate) {
-        this.flightId = flightId;
-        this.flightNumber = flightNumber;
-        this.departureAirportIATACode = departureAirportIATACode;
-        this.arrivalAirportIATACode = arrivalAirportIATACode;
-        this.departureDate = departureDate;
+
+    public Flight() {
+    }
+
+    public int getFlightId() {
+        return this.flightId;
+    }
+
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public String getDepartureAirportIATACode() {
+        return departureAirportIATACode;
+    }
+
+    public String getArrivalAirportIATACode() {
+        return arrivalAirportIATACode;
+    }
+
+    public Date getDepartureDate() {
+        return (Date) this.departureDate.clone();
     }
 
 

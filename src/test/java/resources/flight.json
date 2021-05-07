@@ -1,0 +1,37 @@
+[
+  {
+    "flightId": 0,
+    "flightNumber": 6043,
+    "departureAirportIATACode": "ANC",
+    "arrivalAirportIATACode": "KRK",
+    "departureDate": "2015-03-18T10:37:13-01:00"
+  },
+  {
+    "flightId": 1,
+    "flightNumber": 4147,
+    "departureAirportIATACode": "YYZ",
+    "arrivalAirportIATACode": "GDN",
+    "departureDate": "2018-03-09T08:25:09-01:00"
+  },
+  {
+    "flightId": 2,
+    "flightNumber": 1823,
+    "departureAirportIATACode": "YYZ",
+    "arrivalAirportIATACode": "LEW",
+    "departureDate": "2017-06-03T11:49:49-02:00"
+  },
+  {
+    "flightId": 3,
+    "flightNumber": 3367,
+    "departureAirportIATACode": "YYT",
+    "arrivalAirportIATACode": "PPX",
+    "departureDate": "2018-07-21T04:37:00-02:00"
+  },
+  {
+    "flightId": 4,
+    "flightNumber": 5641,
+    "departureAirportIATACode": "LAX",
+    "arrivalAirportIATACode": "KRK",
+    "departureDate": "2018-05-28T09:34:26-02:00"
+  }
+]
