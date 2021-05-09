@@ -1,26 +1,23 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
+import data.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FlightService {
     private final static double LB_TO_KG = 0.45359237;
-
-    final ObjectMapper objectMapper = new ObjectMapper();
-    final Flight[] flight = objectMapper.readValue(new File("src/test/java/resources/flight.json"), Flight[].class);
-    final CargoEntity[] cargoEntities = objectMapper.readValue(new File("src/test/java/resources/cargo.json"),CargoEntity[].class);
+    private final Deserialization deserialization = new Deserialization();
 
     public FlightService() throws IOException {
     }
 
-    public String getCargo(int flightNumber) {
+    public String getCargo(int flightNumber, Date date) {
 
         Flight ourFlight = null;
-        for (Flight f : flight) {
+        for (Flight f : deserialization.getFlight()) {
             int value = f.getFlightNumber();
-            if (value == flightNumber ) {
+            if (value == flightNumber && f.getDepartureDate().equals(date)  ) {
                 ourFlight = f;
                 break;
             }
@@ -29,7 +26,7 @@ public class FlightService {
 
         int index = ourFlight.getFlightId();
         double baggageWeight = 0;
-        List<Baggage> baggage = cargoEntities[index].getBaggages();
+        List<Baggage> baggage = deserialization.getCargoEntities()[index].getBaggages();
 
         for (Baggage b : baggage) {
             if (WeightUnit.lb.equals(b.getWeightUnit())) {
@@ -38,7 +35,7 @@ public class FlightService {
         }
         double cargoWeight = 0;
 
-        List<Cargo> cargos = cargoEntities[index].getCargos();
+        List<Cargo> cargos = deserialization.getCargoEntities()[index].getCargos();
 
         for (Cargo c : cargos) {
             if (WeightUnit.lb.equals(c.getWeightUnit())) {
@@ -47,11 +44,11 @@ public class FlightService {
         }
         double TotalWeight = cargoWeight + baggageWeight;
 
-        return "baggageWeight: " + baggageWeight + " cargoWeight: " + cargoWeight + " TotalWeight: " + TotalWeight;
+        return "baggageWeight: " + baggageWeight + "kg cargoWeight: " + cargoWeight + "kg TotalWeight: " + TotalWeight + "kg";
     }
 
 
-    public String getFlights(String code) {
+    public String getFlights(String code , Date date) {
 
         List<Flight> departureFlights = new ArrayList<>();
         List<Flight> arrivingFlights = new ArrayList<>();
@@ -59,38 +56,40 @@ public class FlightService {
         int numberOfDeparting = 0;
         int numberOfArriving = 0;
 
-        for (Flight f : flight) {
+        for (Flight f : deserialization.getFlight()) {
             String departingCode = f.getDepartureAirportIATACode();
             String arrivingCode = f.getArrivalAirportIATACode();
-            if (departingCode.equals(code)) {
+            Date fDate = f.getDepartureDate();
+            if (departingCode.equals(code) && fDate.equals(date)) {
                 departureFlights.add(f);
                 numberOfDeparting++;
             }
-            if(arrivingCode.equals(code)) {
+            if(arrivingCode.equals(code) && fDate.equals(date)) {
                 arrivingFlights.add(f);
                 numberOfArriving++;
             }
         }
+        if(numberOfArriving == 0 && numberOfDeparting == 0 ) return "No flights arriving or departing to the airport with code: " + code;
 
         int arrivalBaggage = 0;
         int departureBaggage = 0;
 
         for (Flight f : departureFlights) {
-            List<Baggage> baggage = cargoEntities[f.getFlightId()].getBaggages();
+            List<Baggage> baggage = deserialization.getCargoEntities()[f.getFlightId()].getBaggages();
             for (Baggage b : baggage) {
                 departureBaggage += b.getPieces();
             }
         }
         for (Flight f : arrivingFlights) {
 
-            List<Baggage> baggage = cargoEntities[f.getFlightId()].getBaggages();
+            List<Baggage> baggage = deserialization.getCargoEntities()[f.getFlightId()].getBaggages();
             for (Baggage b : baggage) {
                 arrivalBaggage += b.getPieces();
             }
         }
 
         return "number Of Departing flights: " + numberOfDeparting + " ,number Of Arriving flights: " + numberOfArriving +
-                " ,number Of Departing Baggage: " + departureBaggage + " ,number Of Arriving baggage: " + arrivalBaggage + " to " + code;
+                " ,number Of Departing data.Baggage: " + departureBaggage + " ,number Of Arriving baggage: " + arrivalBaggage + " to " + code;
     }
 
     }

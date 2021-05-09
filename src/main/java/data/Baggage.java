@@ -1,17 +1,16 @@
+package data;
+
 public class Baggage {
 
-    private Long id;
+    private int id;
     private int weight;
     private WeightUnit weightUnit;
     private int pieces;
-    private CargoEntity cargoEntity;
-
 
     public Baggage() {
     }
 
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -27,8 +26,5 @@ public class Baggage {
         return pieces;
     }
 
-    public CargoEntity getCargoEntity() {
-        return cargoEntity;
-    }
 
 }
