@@ -53,6 +53,7 @@ public class FlightService {
 
         List<Flight> departureFlights = new ArrayList<>();
         List<Flight> arrivingFlights = new ArrayList<>();
+        if(code.equals("")) return "You did not pass airport code";
 
         int numberOfDeparting = 0;
         int numberOfArriving = 0;

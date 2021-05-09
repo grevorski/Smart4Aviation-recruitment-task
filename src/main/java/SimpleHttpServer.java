@@ -23,8 +23,6 @@ public class SimpleHttpServer {
         System.out.println("The server is running");
     }
 
-
-    private static final StringBuilder response = new StringBuilder();
     private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
 
     // http://localhost:8000/info
@@ -37,7 +35,7 @@ public class SimpleHttpServer {
     }
     private static class GetFlightHandler implements HttpHandler {
         public void handle(HttpExchange httpExchange) throws IOException {
-
+            StringBuilder response = new StringBuilder();
             FlightService flightService = new FlightService();
             Map <String,String>parms = SimpleHttpServer.queryToMap(httpExchange.getRequestURI().getQuery());
             String code = null;
@@ -68,7 +66,7 @@ public class SimpleHttpServer {
 
     private static class GetWeightHandler implements HttpHandler {
         public void handle(HttpExchange httpExchange) throws IOException {
-
+            StringBuilder response = new StringBuilder();
             FlightService flightService = new FlightService();
             Map <String,String>parms = SimpleHttpServer.queryToMap(httpExchange.getRequestURI().getQuery());
 
