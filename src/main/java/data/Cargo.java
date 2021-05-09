@@ -2,10 +2,10 @@ package data;
 
 public class Cargo {
 
-    private  int id;
+    private int id;
     private int weight;
     private WeightUnit weightUnit;
-    private  int pieces;
+    private int pieces;
 
     public Cargo(){
 

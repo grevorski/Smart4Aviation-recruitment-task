@@ -12,6 +12,7 @@ public class FlightService {
     public FlightService() throws IOException {
     }
 
+
     public String getCargo(int flightNumber, Date date) {
 
         Flight ourFlight = null;
@@ -44,7 +45,7 @@ public class FlightService {
         }
         double TotalWeight = cargoWeight + baggageWeight;
 
-        return "baggageWeight: " + baggageWeight + "kg cargoWeight: " + cargoWeight + "kg TotalWeight: " + TotalWeight + "kg";
+        return "Baggage Weight: " + baggageWeight + "kg  \nCargo Weight: " + cargoWeight + "kg  \nTotal Weight: " + TotalWeight + "kg";
     }
 
 
@@ -69,7 +70,7 @@ public class FlightService {
                 numberOfArriving++;
             }
         }
-        if(numberOfArriving == 0 && numberOfDeparting == 0 ) return "No flights arriving or departing to the airport with code: " + code;
+        if(numberOfArriving == 0 && numberOfDeparting == 0 ) return "No flights arriving or departing to the airport with code: " + code + " at " + date;
 
         int arrivalBaggage = 0;
         int departureBaggage = 0;
@@ -88,8 +89,9 @@ public class FlightService {
             }
         }
 
-        return "number Of Departing flights: " + numberOfDeparting + " ,number Of Arriving flights: " + numberOfArriving +
-                " ,number Of Departing data.Baggage: " + departureBaggage + " ,number Of Arriving baggage: " + arrivalBaggage + " to " + code;
+        return "Number Of Departing flights: " + numberOfDeparting + " \nNumber Of Arriving flights: " + numberOfArriving +
+                " \nNumber Of Departing data.Baggage: " + departureBaggage + " \nNumber Of Arriving baggage: " + arrivalBaggage + " to " + code;
     }
+
 
     }
